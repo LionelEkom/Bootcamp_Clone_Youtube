@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Youtube</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: white;
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 25px;
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #848484;
+            }
+        .main{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+        }
+        .main_left{
+            width: 8%;
+            height: 100%;
+        }
+        .main_right{
+            width: 92%;
+            height: 100%;
+        }
+        nav{
+            width: 100%;
+            height: 20%;
+        }
+        .main_right_body{
+            width: 100%;
+            height: 80%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .main_right_top{
+            width: 100%;
+            height: 50%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .main_right_bottom{
+            width: 100%;
+            height: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+        .main_right_top_left,.main_right_top_right{
+            width: 20%;
+            height: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+        }
+        .main_right_top_left img{
+            width: 40%;
+            height: 70%;
+            object-fit: cover;
+           object-position: center;
+        }
+        .main_right_top_middle{
+            width: 60%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .search_wrapper{
+            width: 80%;
+            height: 70%;
+            border-radius: 32px;
+            border: 1px solid rgb(161, 161, 161);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .search_wrapper input{
+            width: 90%;
+            height: 90%;
+            outline: none;
+            border: none;
+            padding-left: 3%;
+            font-size: 16px;
+        }
+        .search_wrapper i{
+            width: 10%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            border-left: 1px solid gray;
+            background-color: whitesmoke;
+        }
+        .mic-wrap{
+            width: 40px;
+            height: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 3%;
+            border-radius: 50%;
+            font-size: 22px;
+        }
+        .mic-wrap:hover{
+            cursor: pointer;
+            background-color: rgb(218, 214, 214);
+        }
+        .main_right_top_right{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .icon_item_wrapper{
+            width: 20%;
+            height: 80%;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .icon_item_wrapper:hover{
+            cursor: pointer;
+            background-color: rgb(218, 214, 214);
+        }
+        .main_right_top_right img{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            margin-left: 2%;
+        }
+        .nine_plus{
+            padding: 3%;
+            border-radius: 15px;
+            color: white;
+            background-color: rgb(197, 15, 15);
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 300;
+        }
+        .main_right_bottom ul{
+            width: 100%;
+            height: 60%;
+            display: flex;
+            flex-direction: row;
+        }
+        .main_right_bottom ul li{
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 300;
+            background-color: rgb(231, 229, 229);
+            margin-right: 1%;
+            width: auto;
+            height: auto;
+            padding-left: 1%;
+            padding-right: 1%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            color: rgb(88, 87, 87);
+        }
+        .main_right_bottom ul li:nth-child(1){
+            background-color: black;
+            color: white;
+        }
+        .card{
+            width: 30%;
+            height: 55vh;
+        }
+        .video{
+            width: 100%;
+            height: 75%;
+        }
+        .video video{
+            width: 100%;
+            height: 98%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+        .video video:hover{
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        .card_data{
+            width: 100%;
+            height: 25%;
+            display: flex;
+            flex-direction: row;
+        }
+        .card_data img{
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+        }
+        .card_data_wrapper{
+            width: 70%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding-left: 4%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+        }
+        .card_data_wrapper span{
+            padding-bottom: 1%;
+            font-weight: 300;
+            color: rgb(138, 138, 138);
+        }
+        .card_data_wrapper span:nth-child(1){
+            font-size: 17px;
+            font-weight: 600;
+            text-transform: capitalize;
+            color: black;
+        }
+
+        @media only screen and (min-width: 820px){
+            .main{
+                /* background-color: red; */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="main_left">
+            <div class="main_left_top">
+                <ul>
+                    <li>
+                        <div class="hambuger_wrapper">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="icon_wrapper">
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                            <span>Home</span>
+                        </div>
+                     </li>
+                     <li>
+                        <div class="icon_wrapper">
+                            <i class="fa fa-shirtsinbulk" aria-hidden="true"></i>
+                            <span>Shorts</span>
+                        </div>
+                     </li>
+                     <li>
+                        <div class="icon_wrapper">
+                            <i class="fa fa-superscript" aria-hidden="true"></i>
+                            <span>Library</span>
+                        </div>
+                     </li>
+                     <li>
+                        <div class="icon_wrapper">
+                            <i class="fa fa-bookmark" aria-hidden="true"></i>
+                            <span>Bookmark</span>
+                        </div>
+                     </li>
+                </ul>
+            </div>
+            <div class="main_left_bottom"></div>
+        </div>
+        <div class="main_right">
+            <nav>
+                <div class="main_right_top">
+                    <!-- search bar -->
+                    <div class="main_right_top_left">
+                        <img src="./assets/youtube-icon.png" alt="logo"/>
+                    </div>
+                    <div class="main_right_top_middle">
+                        <div class="search_wrapper">
+                            <input type="text" placeholder="Search"/>
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </div>
+                        <i class="fa fa-microphone mic-wrap" aria-hidden="true"></i>
+                    </div>
+                    <div class="main_right_top_right">
+                        <div class="icon_item_wrapper">
+                            <i class="fa fa-video-camera" aria-hidden="true"></i>
+                        </div>
+                        <div class="icon_item_wrapper">
+                            <i class="fa fa-bell-o" aria-hidden="true"></i>
+                            <span class="nine_plus">9+</span>
+                        </div>
+                        <img src="./assets/man.png" alt="man image" />
+                    </div>
+                </div>
+
+                <div class="main_right_bottom">
+                    <!-- Preference elements -->
+                    <ul>
+                        <li><span>All</span></li>
+                        <li><span>FootBall</span></li>
+                        <li><span>Programming</span></li>
+                        <li><span>Basket</span></li>
+                        <li><span>FootBall</span></li>
+                        <li><span>Programming</span></li>
+                        <li><span>Basket</span></li>
+                        <li><span>FootBall</span></li>
+                        <li><span>Programming</span></li>
+                        <li><span>Basket</span></li>
+                        <li><span>Basket</span></li>
+                        <li><span>Basket</span></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="main_right_body">
+                <div class="card">
+                    <div class="video">
+                        <video src="./assets/video.mp4" id="video"  title="my basket video" poster="./assets/poster.jpg" />
+                    </div>
+                    <div class="card_data">
+                        <img src="./assets/logo1.png" alt="video logo" />
+                        <div card class="card_data_wrapper">
+                            <span>Basket is the swaggest sport</span>
+                            <span>Biscrot Basket Training</span>
+                            <span>122k view. 2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="video">
+                        <video src="./assets/video.mp4" title="my basket video" poster="./assets/poster.jpg" controls />
+                    </div>
+                    <div class="card_data">
+                        <img src="./assets/logo1.png" alt="video logo" />
+                        <div card class="card_data_wrapper">
+                            <span>Basket is the swaggest sport</span>
+                            <span>Biscrot Basket Training</span>
+                            <span>122k view. 2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="video">
+                        <video src="./assets/video.mp4" title="my basket video" poster="./assets/poster.jpg" controls />
+                    </div>
+                    <div class="card_data">
+                        <img src="./assets/logo1.png" alt="video logo" />
+                        <div card class="card_data_wrapper">
+                            <span>Basket is the swaggest sport</span>
+                            <span>Biscrot Basket Training</span>
+                            <span>122k view. 2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="video">
+                        <video src="./assets/video.mp4" title="my basket video" poster="./assets/poster.jpg" controls />
+                    </div>
+                    <div class="card_data">
+                        <img src="./assets/logo1.png" alt="video logo" />
+                        <div card class="card_data_wrapper">
+                            <span>Basket is the swaggest sport</span>
+                            <span>Biscrot Basket Training</span>
+                            <span>122k view. 2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="video">
+                        <video src="./assets/video.mp4" title="my basket video" poster="./assets/poster.jpg" controls />
+                    </div>
+                    <div class="card_data">
+                        <img src="./assets/logo1.png" alt="video logo" />
+                        <div card class="card_data_wrapper">
+                            <span>Basket is the swaggest sport</span>
+                            <span>Biscrot Basket Training</span>
+                            <span>122k view. 2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="video">
+                        <video src="./assets/video.mp4" title="my basket video" poster="./assets/poster.jpg" controls />
+                    </div>
+                    <div class="card_data">
+                        <img src="./assets/logo1.png" alt="video logo" />
+                        <div card class="card_data_wrapper">
+                            <span>Basket is the swaggest sport</span>
+                            <span>Biscrot Basket Training</span>
+                            <span>122k view. 2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="video">
+                        <video src="./assets/video.mp4" title="my basket video" poster="./assets/poster.jpg" controls />
+                    </div>
+                    <div class="card_data">
+                        <img src="./assets/logo1.png" alt="video logo" />
+                        <div card class="card_data_wrapper">
+                            <span>Basket is the swaggest sport</span>
+                            <span>Biscrot Basket Training</span>
+                            <span>122k view. 2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="video">
+                        <video src="./assets/video.mp4" title="my basket video" poster="./assets/poster.jpg" controls />
+                    </div>
+                    <div class="card_data">
+                        <img src="./assets/logo1.png" alt="video logo" />
+                        <div card class="card_data_wrapper">
+                            <span>Basket is the swaggest sport</span>
+                            <span>Biscrot Basket Training</span>
+                            <span>122k view. 2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="video">
+                        <video src="./assets/video.mp4" title="my basket video" poster="./assets/poster.jpg" controls />
+                    </div>
+                    <div class="card_data">
+                        <img src="./assets/logo1.png" alt="video logo" />
+                        <div card class="card_data_wrapper">
+                            <span>Basket is the swaggest sport</span>
+                            <span>Biscrot Basket Training</span>
+                            <span>122k view. 2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var video = document.getElementById('video')
+        let isClick = false;
+
+        video.onmouseenter=function(e){
+            if(!isClick){
+                this.play()
+                video.muted = true;
+            }
+            console.log("entered")
+        }
+        video.onmouseleave=function(e){
+            if(isClick){
+                video.pause()
+                video.currentTime = 0
+                video.load()
+            }
+            console.log("leave")
+            
+        }
+
+        video.onclick=function(){
+            if(isClick){
+                video.play()
+                video.muted = false;
+            }else{
+                video.pause();
+                video.muted = true
+            }
+            isClick = !isClick
+        }
+    </script>
+</body>
+</html>
